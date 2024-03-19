@@ -1,31 +1,35 @@
-import { useState } from 'react';
-import { hello_backend } from 'declarations/hello_backend';
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom'
 
-function App() {
-  const [greeting, setGreeting] = useState('');
+import './style.css'
+import Home from './views/home'
+import ANewPageWhichHaveALotOfCardShowingImagesAndDestinationForEachPartyEvent from './views/a-new-page-which-have-a-lot-of-card-showing-images-and-destination-for-each-party-event'
+import NotFound from './views/not-found'
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    hello_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+const App = () => {
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
-  );
+    <Home />
+    // <Router>
+    //   <Routes>
+    //     <Route component={Home} exact path="/" />
+    //     <Route
+    //       component={
+    //         ANewPageWhichHaveALotOfCardShowingImagesAndDestinationForEachPartyEvent
+    //       }
+    //       exact
+    //       path="/a-new-page-which-have-a-lot-of-card-showing-images-and-destination-for-each-party-event"
+    //     />
+    //     <Route component={NotFound} path="**" />
+    //     <Navigate to="**" />
+    //   </Routes>
+    // </Router>
+  )
 }
 
-export default App;
+export default App
